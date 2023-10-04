@@ -24,19 +24,20 @@ jobs:
           sudo apt-get install -y ruby-full build-essential
           gem install bundler      
 
-      - name: Build AmuseWiki
+       - name: Clone AmuseWiki
         run: |
           git clone https://github.com/melmothx/amusewiki.git
           cd amusewiki
-          gem install bundler
-
-      - name: Build and Run AmuseWiki Locally
-        run: |
-          cd amusewiki
-          bundle exec rake db:create  # Maak de database aan (pas aan aan je behoeften)
+          bundle install
+          bundle exec rake db:create
           bundle exec rake db:migrate
           bundle exec rake assets:precompile
-          bundle exec rails server -b 0.0.0.0  # Start de server en luister naar alle beschikbare netwerkinterfaces
-      # Voeg hier stappen toe voor monitoring, bijvoorbeeld het opzetten van Prometheus en Grafana
+          bundle exec rails server -b 0.0.0.0
 
-      # Voeg hier stappen toe voor live demonstratie en bespreking van de oplevering
+
+      - name: Wait for AmuseWiki to Start
+        run: sleep 10  # Wacht een paar seconden om ervoor te zorgen dat de server is gestart
+
+      - name: Test AmuseWiki
+        run: |
+         curl http://localhost:3000
