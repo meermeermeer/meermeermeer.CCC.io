@@ -33,11 +33,17 @@ jobs:
       - name: Set Gemfile Path
         id: find_gemfile
         run: |
-          echo "::set-output name=path::$(find . -type f -name Gemfile)"
+          gemfile_path=$(find . -type f -name Gemfile)
+          echo "Gemfile path is: $gemfile_path"
+          echo "GEMFILE_PATH=$gemfile_path" >> $GITHUB_ENV
+
       
-      - name: Debug Gemfile Path
+      - name: Use Gemfile Path
         run: |
-          echo "Gemfile path is: ${{ steps.find_gemfile.outputs.path }}"
+          # Access the Gemfile path from the environment variable
+          gemfile_path=$GEMFILE_PATH
+          echo "Using Gemfile path: $gemfile_path"
+
 
 
       - name: AmuseWiki
