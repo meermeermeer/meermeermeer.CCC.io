@@ -22,7 +22,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ruby-full build-essential
-          gem bundler install
+          gem install bundler
 
       - name: Clone AmuseWiki
         run: |
