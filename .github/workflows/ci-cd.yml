@@ -18,11 +18,12 @@ jobs:
         with:
           ruby-version: 2.7  # Pas dit aan naar de gewenste Ruby-versie
 
-      - name: Install Dependencies
+      - name: Install Ruby and Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential
+          sudo apt-get install -y ruby-full build-essential
           gem install bundler
+
           
       - name: Install Ruby and Dependencies
         run: |
@@ -30,16 +31,14 @@ jobs:
           sudo apt-get install -y ruby-full build-essential
           gem install bundler      
 
-      - name: Build and Deploy AmuseWiki
+      - name: Build AmuseWiki
         run: |
           git clone https://github.com/melmothx/amusewiki.git
           cd amusewiki
           gem install bundler
 
-      - name: Build and Deploy AmuseWiki
+      - name: Deploy AmuseWiki
         run: |
-          # Voeg hier instructies toe om AmuseWiki te bouwen en uit te rollen
-          # Bijvoorbeeld:
           bundle exec rake assets:precompile
           bundle exec rake db:migrate
           bundle exec rails server -d  # Start de server in de achtergrond
