@@ -1,34 +1,42 @@
-name: Run commands on different operating systems
+name: CI/CD Pipeline
+
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main  # Pas dit aan naar de naam van je hoofdtak
 
 jobs:
-  Run-npm-on-Ubuntu:
-    name: Run npm on Ubuntu
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm help
 
-  Run-PSScriptAnalyzer-on-Windows:
-    name: Run PSScriptAnalyzer on Windows
-    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Install PSScriptAnalyzer module
-        shell: pwsh
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set Up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7  # Pas dit aan naar de gewenste Ruby-versie
+
+      - name: Install Dependencies
         run: |
-          Set-PSRepository PSGallery -InstallationPolicy Trusted
-          Install-Module PSScriptAnalyzer -ErrorAction Stop
-      - name: Get list of rules
-        shell: pwsh
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+          gem install bundler
+          bundle install  # Dit gaat ervan uit dat AmuseWiki Ruby-afhankelijkheden heeft
+
+      - name: Build and Deploy AmuseWiki
         run: |
-          Get-ScriptAnalyzerRule
+          git clone https://github.com/melmothx/amusewiki.git
+          cd amusewiki
+          # Voeg hier instructies toe om AmuseWiki te bouwen en uit te rollen
+          # Bijvoorbeeld:
+          # - bundle exec rake assets:precompile
+          # - bundle exec rake db:migrate
+          # - bundle exec rails server -d  # Start de server in de achtergrond
+
+      # Voeg hier stappen toe voor monitoring, bijvoorbeeld het opzetten van Prometheus en Grafana
+
+      # Voeg hier stappen toe voor live demonstratie en bespreking van de oplevering```
 
 
