@@ -37,12 +37,12 @@ jobs:
           cd amusewiki
           gem install bundler
 
-      - name: Deploy AmuseWiki
+          
+      - name: Build and Run AmuseWiki Locally
         run: |
           bundle exec rake assets:precompile
           bundle exec rake db:migrate
-          bundle exec rails server -d  # Start de server in de achtergrond
-
+          bundle exec rails server -b 127.0.0.1  # Start de server en luister naar alle beschikbare netwerkinterfaces
 
       # Voeg hier stappen toe voor monitoring, bijvoorbeeld het opzetten van Prometheus en Grafana
 
