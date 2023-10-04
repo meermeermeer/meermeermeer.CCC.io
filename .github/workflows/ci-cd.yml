@@ -17,14 +17,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7  # Pas dit aan naar de gewenste Ruby-versie
-
-      - name: Install Ruby and Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ruby-full build-essential
-          gem install bundler
-
-          
+    
       - name: Install Ruby and Dependencies
         run: |
           sudo apt-get update
@@ -37,13 +30,12 @@ jobs:
           cd amusewiki
           gem install bundler
 
-          
       - name: Build and Run AmuseWiki Locally
         run: |
-          bundle exec rake assets:precompile
+          bundle exec rake db:create  # Maak de database aan (pas aan aan je behoeften)
           bundle exec rake db:migrate
-          bundle exec rails server -b 127.0.0.1  # Start de server en luister naar alle beschikbare netwerkinterfaces
-
+          bundle exec rake assets:precompile
+          bundle exec rails server -b 0.0.0.0  # Start de server en luister naar alle beschikbare netwerkinterfaces
       # Voeg hier stappen toe voor monitoring, bijvoorbeeld het opzetten van Prometheus en Grafana
 
       # Voeg hier stappen toe voor live demonstratie en bespreking van de oplevering
