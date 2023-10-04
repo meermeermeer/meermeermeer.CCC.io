@@ -35,6 +35,9 @@ jobs:
         run: |
           echo "path=$(find . -type f -name Gemfile)" >> $GITHUB_ENV
 
+      - name: Debug Gemfile Path
+        run: echo "Gemfile path is: ${{ env.path }}"
+
       - name: AmuseWiki
         run: |
           cd ${{ env.path }}
