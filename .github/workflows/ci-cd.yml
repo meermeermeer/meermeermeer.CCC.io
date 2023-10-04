@@ -36,7 +36,8 @@ jobs:
 
 
       - name: Wait for AmuseWiki to Start
-        run: sleep 10  # Wacht een paar seconden om ervoor te zorgen dat de server is gestart
+        run: |
+          sleep 10  # Wacht een paar seconden om ervoor te zorgen dat de server is gestart
 
       - name: Test AmuseWiki
         run: |
