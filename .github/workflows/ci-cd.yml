@@ -22,13 +22,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ruby-full build-essential
-          gem install bundler
+          gem bundler install
 
       - name: Clone AmuseWiki
         run: |
           git clone https://github.com/melmothx/amusewiki.git
           cd amusewiki
-          gem install bundler
+          gem bundler install
           bundle exec rake db:create
           bundle exec rake db:migrate
           bundle exec rake assets:precompile
