@@ -32,6 +32,7 @@ jobs:
 
       - name: Build and Run AmuseWiki Locally
         run: |
+          cd amusewiki
           bundle exec rake db:create  # Maak de database aan (pas aan aan je behoeften)
           bundle exec rake db:migrate
           bundle exec rake assets:precompile
