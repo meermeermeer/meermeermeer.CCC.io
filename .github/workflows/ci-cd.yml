@@ -45,15 +45,6 @@ jobs:
           # - bundle exec rails server -d  # Start de server in de achtergrond
 
 
-      - name: Deploy to GitHub Pages
-        run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
-          git checkout main  # Pas aan naar de naam van je hoofdtak
-          git add .  # Voeg alle wijzigingen toe
-          git commit -m "Update website"  # Commit de wijzigingen
-          git push origin main  # Push naar de hoofdtak
-
       # Voeg hier stappen toe voor monitoring, bijvoorbeeld het opzetten van Prometheus en Grafana
 
       # Voeg hier stappen toe voor live demonstratie en bespreking van de oplevering
