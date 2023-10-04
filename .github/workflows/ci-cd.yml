@@ -32,7 +32,8 @@ jobs:
 
       - name: Find Gemfile
         id: gemfile
-        run: echo "::set-output name=path::$(find . -type f -name Gemfile)"
+        run: |
+          echo "path=$(find . -type f -name Gemfile)" >> $GITHUB_ENV
 
       - name: AmuseWiki
         run: |
