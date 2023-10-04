@@ -23,6 +23,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential
           gem install bundler
+      - name: Install Ruby and Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby-full build-essential
+          gem install bundler      
 
       - name: Clone AmuseWiki Repository
         run: |
