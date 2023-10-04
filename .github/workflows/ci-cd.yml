@@ -36,11 +36,6 @@ jobs:
           cd amusewiki
           bundle install
 
-
-      - name: Install AmuseWiki Dependencies
-        run: |
-          bundle install  # Dit gaat ervan uit dat AmuseWiki Ruby-afhankelijkheden heeft
-
       - name: Build and Deploy AmuseWiki
         run: |
           # Voeg hier instructies toe om AmuseWiki te bouwen en uit te rollen
