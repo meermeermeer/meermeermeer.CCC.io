@@ -33,13 +33,12 @@ jobs:
       - name: Find Gemfile
         id: gemfile
         run: |
-          e = echo "path=$(find . -type f -name Gemfile)" >> $GITHUB_ENV
+          echo "path=$(find . -type f -name Gemfile)" >> $GITHUB_ENV
 
       - name: AmuseWiki
-        working-directory: ${{ env.path }}
         run: |
+          cd ${{ env.path }}
           gem install bundler -v 2.2.27
-          cd e
           bundle exec rake db:create
           bundle exec rake db:migrate
           bundle exec rake assets:precompile
