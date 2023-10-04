@@ -40,9 +40,9 @@ jobs:
         run: |
           # Voeg hier instructies toe om AmuseWiki te bouwen en uit te rollen
           # Bijvoorbeeld:
-          # - bundle exec rake assets:precompile
-          # - bundle exec rake db:migrate
-          # - bundle exec rails server -d  # Start de server in de achtergrond
+          bundle exec rake assets:precompile
+          bundle exec rake db:migrate
+          bundle exec rails server -d  # Start de server in de achtergrond
 
 
       # Voeg hier stappen toe voor monitoring, bijvoorbeeld het opzetten van Prometheus en Grafana
