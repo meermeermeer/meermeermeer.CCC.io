@@ -28,7 +28,7 @@ jobs:
         run: |
           git clone https://github.com/melmothx/amusewiki.git
           cd amusewiki
-          gem bundler install
+          gem install bundler -v 2.2.27
 
       - name: AmuseWiki
         run: |
