@@ -29,11 +29,14 @@ jobs:
           git clone https://github.com/melmothx/amusewiki.git
           cd amusewiki
           gem bundler install
+
+      - name: AmuseWiki
+        run: |
           bundle exec rake db:create
           bundle exec rake db:migrate
           bundle exec rake assets:precompile
           bundle exec rails server -b 0.0.0.0
-
+          
       - name: Wait for AmuseWiki to Start
         run: |
           sleep 10  # Wacht een paar seconden om ervoor te zorgen dat de server is gestart
