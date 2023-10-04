@@ -23,12 +23,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential
           gem install bundler
-          bundle install  # Dit gaat ervan uit dat AmuseWiki Ruby-afhankelijkheden heeft
 
       - name: Build and Deploy AmuseWiki
         run: |
           git clone https://github.com/melmothx/amusewiki.git
           cd amusewiki
+          bundle install  # Dit gaat ervan uit dat AmuseWiki Ruby-afhankelijkheden heeft
           # Voeg hier instructies toe om AmuseWiki te bouwen en uit te rollen
           # Bijvoorbeeld:
           # - bundle exec rake assets:precompile
