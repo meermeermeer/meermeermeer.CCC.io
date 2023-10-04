@@ -38,7 +38,7 @@ jobs:
       - name: AmuseWiki
         working-directory: ${{ env.path }}
         run: |
-          bundle install
+          gem install bundler -v 2.2.27
           bundle exec rake db:create
           bundle exec rake db:migrate
           bundle exec rake assets:precompile
