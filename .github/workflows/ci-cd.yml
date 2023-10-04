@@ -1,22 +1,11 @@
-name: Check Workflow
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
-  check:
+  example_job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
-      - name: Greet and Show Date
+      - name: Print Runner Information
         run: |
-          echo "Hello, GitHub Actions!"
-          echo "Current date: $(date)"
+          echo "Operating System: ${{ runner.os }}"
+          echo "GitHub Event: ${{ github.event_name }}"
+          echo "Runner Labels: ${{ runner.labels }}"
 
-      - name: List Files
-        run: ls -al
