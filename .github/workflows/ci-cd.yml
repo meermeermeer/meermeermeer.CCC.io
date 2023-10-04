@@ -30,6 +30,10 @@ jobs:
           cd amusewiki
           gem install bundler -v 2.2.27
 
+      - name: Find Gemfile
+        id: gemfile
+        run: echo "::set-output name=path::$(find . -type f -name Gemfile)"
+
       - name: AmuseWiki
         run: |
           cd amusewiki
